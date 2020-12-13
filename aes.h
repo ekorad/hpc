@@ -5,6 +5,8 @@
 #define Nk sizeof(key)/4
 #define Nr 6+Nk
 
+#include <cstring>
+
 typedef unsigned char word[4];
 typedef unsigned char state[4][4];
 

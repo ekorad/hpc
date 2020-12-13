@@ -17,11 +17,6 @@ char* in_filename;			// the filename string of the input file
 char* out_filename;			// the filename string of the output file
 std::string action_string;			// the action string that will determine what action should we do : encrypt or decrypt
 
-struct separate_thousands : std::numpunct<char> {
-	char_type do_thousands_sep() const override { return '.'; }
-	string_type do_grouping() const override { return "\3"; }
-};
-
 int main(int argc,char *argv[]){
 
 	if (argc < 4) 
@@ -49,10 +44,8 @@ int main(int argc,char *argv[]){
 		decrypt();
 	}	
 
-	auto thousands = std::make_unique<separate_thousands>();
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-	std::cout.imbue(std::locale(std::cout.getloc(), thousands.release()));
 	std::cout << num_threads << "," << duration.count() << std::endl;
 
 	return 0;
