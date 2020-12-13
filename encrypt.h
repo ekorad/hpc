@@ -13,6 +13,6 @@ extern unsigned char output[16];
 extern unsigned char w[4][Nb*(Nr+1)];
 extern unsigned char key[16];
 
-void* encrypt();
+void encrypt(int nthreads);
 
 #endif
